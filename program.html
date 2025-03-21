@@ -6,6 +6,8 @@
         <link rel="icon" href="./assets/img/icon.png" type="image/x-icon">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
+        <script src="./uriCompressor-min.js"></script>
+
         <script type="module" defer>
             import { graph, linker  } from "./graphviz.js";
             window.graph = new graph();
@@ -29,6 +31,10 @@
                 }
 
                 var result = window.linker.toLink(window.graph, "dot");
+                console.log(result);
+                result = URICompressor.push(result, "LZMA2", "URI-B64", 8192);
+                console.log(result.data);
+                result = `https://link.snailien.net/unpack.php?enc=${result.encoding}&cmpr=${result.compression}&data=${result.data}`;
                 output.href = result;
                 output.innerHTML = result;
             }
