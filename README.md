@@ -19,3 +19,6 @@
    ```
   ### Usage over httpx POST
    Not yet implemented.
+
+ ## Dependencies
+  This program relies on https://github.com/Snail51/URI-Compressor. `uriCompressor-min.js` is from it.
